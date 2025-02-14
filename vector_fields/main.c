@@ -122,10 +122,10 @@ int main(void) {
         // set_field_line(&fl);
 
         SDL_RenderClear(rend);
-        if (render_type == FIELD_LINES || render_type == BOTH)
-            render_field_vec(rend);
         if (render_type == GRADIENT || render_type == BOTH)
             render_gradient(rend);
+        if (render_type == FIELD_LINES || render_type == BOTH)
+            render_field_vec(rend);
         SDL_SetRenderDrawColor(rend, 0, 0, 0, 0);
         SDL_RenderPresent(rend);
     }
@@ -153,7 +153,7 @@ void set_gradient(int x, int y) {
         field += k * arr.array[i].charge / distance_square;
     }
 
-    pixels[y * WIDTH + x] = number_to_color(field, 0.05);
+    pixels[y * WIDTH + x] = number_to_color(field, 0.01);
 }
 
 void render_gradient(SDL_Renderer *rend) {
